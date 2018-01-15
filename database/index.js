@@ -108,6 +108,7 @@ const getEmails = () =>
       }
       resolve(data.rows);
     }));
+
 if (process.env.INITIALIZEDB) {
   initializeDB()
     .then()
