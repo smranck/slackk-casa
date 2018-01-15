@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const passport = require('passport')
+const LocalStrategy = require('passport-local').Strategy;
 
 const db = require('../database');
 const auth = require('./auth');
@@ -17,6 +19,19 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASSWORD,
   },
 });
+
+passport.use(new LocalStrategy(
+  async (username, password, done) => {
+    try { 
+      if (await auth.checkUser(username, password)) {
+        return done(null, true);
+      }
+      return done(null, false);
+    } catch(err) {
+      return console.error(err);
+    }
+  }
+));
 
 const router = express.Router();
 
