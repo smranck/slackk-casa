@@ -100,14 +100,8 @@ const createWorkspace = (name, dbName = `ws_${name}${Date.now()}`) =>
 
 const getWorkspaces = () => client.query('SELECT * FROM workspaces').then(data => data.rows);
 
-const getEmails = () =>
-  new Promise((resolve, reject) =>
-    client.query('SELECT email FROM USERS', (err, data) => {
-      if (err) {
-        reject(err);
-      }
-      resolve(data.rows);
-    }));
+const getEmails = () => client.query('SELECT email FROM USERS')
+  .then(data => data.rows);
 
 if (process.env.INITIALIZEDB) {
   initializeDB()
