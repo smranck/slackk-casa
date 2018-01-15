@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import {
   Collapse,
   Navbar,
@@ -57,7 +59,7 @@ export default class NavBar extends React.Component {
 }
 
 NavBar.propTypes = {
-  currentWorksSpaceName: Proptypes.string,
+  currentWorksSpaceName: PropTypes.string,
 }
 NavBar.defaultProps = {
   currentWorkSpaceName: 'select a workspace!',

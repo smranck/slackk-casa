@@ -26,10 +26,14 @@ export default class App extends React.Component {
       currentWorkSpaceId: 0,
       currentWorkSpaceName: '',
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.loadWorkSpaces = this.loadWorkSpaces.bind(this);
+    this.changeCurrentWorkSpace = this.changeCurrentWorkSpace.bind(this);
   }
 
   componentDidMount() {
-    let server = location.origin.replace(/^http/, 'ws');
+    let server = 'ws://127.0.0.1:3000' || location.origin.replace(/^http/, 'ws');
 
     // connect to the websocket server
     connect(server, this);
@@ -82,8 +86,8 @@ export default class App extends React.Component {
         <Body
           messages={messages}
           workSpaces={workSpaces}
-          loadWorkSpaces={() => this.loadWorkSpaces()}
-          changeCurrentWorkSpace={() => this.changeCurrentWorkSpace()}
+          loadWorkSpaces={this.loadWorkSpaces}
+          changeCurrentWorkSpace={this.changeCurrentWorkSpace}
           currentWorkSpaceId={currentWorkSpaceId}
         />
         <div className="input-container">
@@ -93,16 +97,11 @@ export default class App extends React.Component {
             type="textarea"
             name="text"
             placeholder={`Message #${currentWorkSpaceName || 'select a workspace!'}`}
-            onChange={() => this.handleChange()}
-            onKeyPress={() => this.handleKeyPress()}
+            onChange={this.handleChange}
+            onKeyPress={this.handleKeyPress}
           />
         </div>
       </div>
     );
   }
-}
-
-//ensures that username is a string if it exists
-App.propTypes = {
-  location.state.username: Proptypes.string,
 }

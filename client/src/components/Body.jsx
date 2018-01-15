@@ -2,6 +2,8 @@ import React from 'react';
 import { Container, Row, Col, ListGroup, ListGroupItem } from 'reactstrap';
 import MessageList from './MessageList.jsx';
 import WorkSpaceList from './WorkSpaceList.jsx';
+import PropTypes from 'prop-types';
+
 //container for other containers
 export default class Body extends React.Component {
   constructor(props) {

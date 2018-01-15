@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Alert, Row, Col } from 'reactstrap';
 import WorkSpaceEntry from './WorkSpaceEntry.jsx';
 import CreateWorkSpace from './CreateWorkSpace.jsx';
+import PropTypes from 'prop-types';
 
 //Container for all workspaces
 export default class WorkSpaceList extends Component {
@@ -12,11 +13,15 @@ export default class WorkSpaceList extends Component {
       //createFail usually happens if a workspace already exists
       createFail: false,
     };
+    this.handleFail = this.handleFail.bind(this);
+    this.getWorkSpaceQuery = this.getWorkSpaceQuery.bind(this);
+    this.createWorkSpace = this.createWorkSpace.bind(this);
   }
 
   //grabs the value from the input field
   getWorkSpaceQuery(query) {
     this.setState({ workSpaceQuery: query });
+    console.log(this.state, 'from WORKSPACELIST')
   }
 
   //posts the query to the server that results in a success or failed creation
@@ -50,15 +55,15 @@ export default class WorkSpaceList extends Component {
           </Col>
           <Col className="mt-2">
             <CreateWorkSpace
-              getWorkSpaceQuery={() => this.getWorkSpaceQuery()}
-              createWorkSpace={() => this.createWorkSpace()}
+              getWorkSpaceQuery={this.getWorkSpaceQuery}
+              createWorkSpace={this.createWorkSpace}
             />
           </Col>
         </Row>
         {workSpaces.map(workSpace => (
           <WorkSpaceEntry
             workSpace={workSpace}
-            handleFail={() => this.handleFail()}
+            handleFail={() => this.handleFail}
             key={workSpace.id}
             changeCurrentWorkSpace={changeCurrentWorkSpace}
             currentWorkSpaceId={currentWorkSpaceId}
@@ -72,7 +77,7 @@ export default class WorkSpaceList extends Component {
   }
 }
 //required prop types
-WorkSpaceList.propTypes = {
-  workSpaces: PropTypes.array,
-  currentWorkSpaceId: PropTypes.number,
-}
+// WorkSpaceList.propTypes = {
+//   workSpaces: PropTypes.array,
+//   currentWorkSpaceId: PropTypes.number,
+// }

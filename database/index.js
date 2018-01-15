@@ -3,8 +3,8 @@ const path = require('path');
 const fs = require('fs');
 
 const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true,
+  connectionString: process.env.DATABASE_URL || 'psql://home:@localhost/slackk',
+  //ssl: true,
 });
 
 client
@@ -97,7 +97,7 @@ if (process.env.INITIALIZEDB) {
   initializeDB()
     .then()
     .catch(err => console.error('error creating database tables, ', err.stack));
-}
+//}
 
 module.exports = {
   client,

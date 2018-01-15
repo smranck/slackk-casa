@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from 'reactstrap';
 import { getWorkSpaceMessagesFromServer } from '../socketHelpers/index.js';
+import PropTypes from 'prop-types';
 
 export default class WorkSpaceEntry extends Component {
   constructor(props) {
@@ -38,6 +39,6 @@ export default class WorkSpaceEntry extends Component {
   }
 }
 
-Body.propTypes = {
+WorkSpaceEntry.propTypes = {
   currentWorkSpaceId: PropTypes.number,
 }
