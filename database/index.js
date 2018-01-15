@@ -92,10 +92,7 @@ const getWorkspaces = () => client.query('SELECT * FROM workspaces').then(data =
 const getEmails = () => client.query('SELECT email FROM USERS')
   .then(data => data.rows);
 
-<<<<<<< HEAD
 // create necessary tables if environment flag INITIALIZEDB is set to true
-=======
->>>>>>> Configure for production
 if (process.env.INITIALIZEDB) {
   initializeDB()
     .then()
