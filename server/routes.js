@@ -13,8 +13,8 @@ const transporter = nodemailer.createTransport({
   port: 465,
   secure: true,
   auth: {
-    user: 'slackkcasa@gmail.com',
-    pass: process.env.EMAIL_PASSWORD || 'Casa1234', // TODO replace with ENV variable.
+    user: process.env.EMAIL_USERNAME,
+    pass: process.env.EMAIL_PASSWORD,
   },
 });
 
@@ -44,7 +44,7 @@ router.post('/signup', async (req, res) => {
     }
     await auth.addUser(req.body.username, req.body.password, req.body.email, req.body.passwordHint);
     let mailOptions = {
-      from: 'slackkcasa@gmail.com',
+      from: `${process.env.EMAIL_USERNAME}`,
       to: `${req.body.email}`,
       subject: `Welcome to slackk-casa! ${req.body.username}`,
       text: 'Thanks for joining slackk-casa! We hope you have a great time using our service!',
@@ -52,7 +52,7 @@ router.post('/signup', async (req, res) => {
     };
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
-        return console.log(error);
+        throw error;
       }
       console.log('Message sent: %s', info.messageId);
       console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
