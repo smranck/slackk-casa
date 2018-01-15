@@ -37,3 +37,7 @@ export default class WorkSpaceEntry extends Component {
     );
   }
 }
+
+Body.propTypes = {
+  currentWorkSpaceId: PropTypes.number,
+}

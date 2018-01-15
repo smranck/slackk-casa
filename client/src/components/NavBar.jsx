@@ -55,3 +55,10 @@ export default class NavBar extends React.Component {
     );
   }
 }
+
+NavBar.propTypes = {
+  currentWorksSpaceName: Proptypes.string,
+}
+NavBar.defaultProps = {
+  currentWorkSpaceName: 'select a workspace!',
+}

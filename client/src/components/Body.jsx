@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Row, Col, ListGroup, ListGroupItem } from 'reactstrap';
 import MessageList from './MessageList.jsx';
 import WorkSpaceList from './WorkSpaceList.jsx';
-
+//container for other containers
 export default class Body extends React.Component {
   constructor(props) {
     super(props);
@@ -35,4 +35,10 @@ export default class Body extends React.Component {
       </Container>
     );
   }
+}
+
+Body.propTypes = {
+  messages: PropTypes.array,
+  workspaces: PropTypes.array,
+  currentWorkSpaceId: PropTypes.number,
 }
