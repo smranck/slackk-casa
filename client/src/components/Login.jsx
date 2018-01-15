@@ -101,6 +101,12 @@ export default class Login extends React.Component {
                 Sign Up
               </Button>
             </Link>
+            <br />
+            <div>
+              <Button onClick={() => this.recoverPassword()} color="primary" bssize="sm">
+                Forgot your password? Click here
+              </Button>
+            </div>
           </div>
         )}
       </div>
