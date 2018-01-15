@@ -24,16 +24,34 @@ passport.use(new LocalStrategy(
   async (username, password, done) => {
     try { 
       if (await auth.checkUser(username, password)) {
-        return done(null, true);
+        return done(null, await db.getUser(username));
       }
       return done(null, false);
     } catch(err) {
-      return console.error(err);
+      return done(err);
     }
   }
 ));
 
+passport.serializeUser((user, done) => {
+  done(null, user.name);
+});
+
+passport.deserializeUser( async (name, done) => {
+  try {
+    return done(null, await db.getUser(name));
+  } catch(err) {
+    return done(err);
+  }
+});
+
 const router = express.Router();
+
+router.use(express.cookieParser());
+router.use(express.session({ secret: 'keyboard cat' }));
+router.use(passport.initialize());
+router.use(passport.session());
+
 
 const reactRoute = (req, res) => res.sendFile(path.resolve(__dirname, '../client/dist/index.html'));
 
