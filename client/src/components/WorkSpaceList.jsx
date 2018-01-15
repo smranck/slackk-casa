@@ -77,7 +77,7 @@ export default class WorkSpaceList extends Component {
   }
 }
 //required prop types
-// WorkSpaceList.propTypes = {
-//   workSpaces: PropTypes.array,
-//   currentWorkSpaceId: PropTypes.number,
-// }
+WorkSpaceList.propTypes = {
+  workSpaces: PropTypes.array,
+  currentWorkSpaceId: PropTypes.number,
+}
