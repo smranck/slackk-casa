@@ -21,7 +21,6 @@ export default class WorkSpaceList extends Component {
   //grabs the value from the input field
   getWorkSpaceQuery(query) {
     this.setState({ workSpaceQuery: query });
-    console.log(this.state, 'from WORKSPACELIST')
   }
 
   //posts the query to the server that results in a success or failed creation

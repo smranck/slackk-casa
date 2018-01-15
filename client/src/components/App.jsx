@@ -26,8 +26,8 @@ export default class App extends React.Component {
       currentWorkSpaceId: 0,
       currentWorkSpaceName: '',
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
+    // this.handleKeyPress = this.handleKeyPress.bind(this);
     this.loadWorkSpaces = this.loadWorkSpaces.bind(this);
     this.changeCurrentWorkSpace = this.changeCurrentWorkSpace.bind(this);
   }
@@ -97,8 +97,8 @@ export default class App extends React.Component {
             type="textarea"
             name="text"
             placeholder={`Message #${currentWorkSpaceName || 'select a workspace!'}`}
-            onChange={this.handleChange}
-            onKeyPress={this.handleKeyPress}
+            onChange={event => this.handleChange(event)}
+            onKeyPress={event => this.handleKeyPress(event)}
           />
         </div>
       </div>
