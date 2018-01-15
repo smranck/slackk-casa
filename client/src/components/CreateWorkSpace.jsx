@@ -10,10 +10,6 @@ export default class CreateWorkSpace extends React.Component {
     this.state = {
       popoverOpen: false,
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.closePopUp = this.closePopUp.bind(this);
   }
   //Changes the popout state
   toggle() {
@@ -54,8 +50,8 @@ export default class CreateWorkSpace extends React.Component {
         >
           <PopoverHeader>Enter Workspace name: </PopoverHeader>
           <PopoverBody>
-            <input type="text" placeholder="workspace name.." onChange={this.handleChange} />
-            <button onClick={this.handleClick}> Add </button>
+            <input type="text" placeholder="workspace name.." onChange={event => this.handleChange(event)} />
+            <button onClick={() => this.handleClick()}> Add </button>
           </PopoverBody>
         </Popover>
       </div>
