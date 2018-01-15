@@ -65,7 +65,7 @@ const createUser = (username, passhash, email, passhint) =>
 
 const getUser = username =>
   client
-    .query('SELECT password FROM users WHERE username = ($1)', [username])
+    .query('SELECT * FROM users WHERE username = ($1)', [username])
     .then(data => data.rows[0]);
 
 const getPasswordHint = username =>
