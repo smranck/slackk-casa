@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
   secure: true,
   auth: {
     user: 'slackkcasa@gmail.com',
-    pass: process.env.EMAIL_PASSWORD, // TODO replace with ENV variable.
+    pass: process.env.EMAIL_PASSWORD || 'Casa1234', // TODO replace with ENV variable.
   },
 });
 
