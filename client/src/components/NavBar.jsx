@@ -41,7 +41,7 @@ export default class NavBar extends React.Component {
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
-            <UncontrolledDropdown nav inNavbar>
+            <UncontrolledDropdown nav>
               <DropdownToggle nav caret>
                 Options
               </DropdownToggle>
