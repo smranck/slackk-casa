@@ -26,10 +26,6 @@ export default class App extends React.Component {
       currentWorkSpaceId: 0,
       currentWorkSpaceName: '',
     };
-    // this.handleChange = this.handleChange.bind(this);
-    // this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.loadWorkSpaces = this.loadWorkSpaces.bind(this);
-    this.changeCurrentWorkSpace = this.changeCurrentWorkSpace.bind(this);
   }
 
   componentDidMount() {
@@ -86,8 +82,8 @@ export default class App extends React.Component {
         <Body
           messages={messages}
           workSpaces={workSpaces}
-          loadWorkSpaces={this.loadWorkSpaces}
-          changeCurrentWorkSpace={this.changeCurrentWorkSpace}
+          loadWorkSpaces={() => this.loadWorkSpaces()}
+          changeCurrentWorkSpace={(id, name) => this.changeCurrentWorkSpace(id, name)}
           currentWorkSpaceId={currentWorkSpaceId}
         />
         <div className="input-container">

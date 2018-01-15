@@ -30,7 +30,6 @@ export default class CreateWorkSpace extends React.Component {
   //grabs the input value
   handleChange(event) {
     event.preventDefault();
-    console.log(event.target.value)
     this.props.getWorkSpaceQuery(event.target.value);
   }
 
